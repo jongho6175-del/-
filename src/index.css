@@ -1,0 +1,137 @@
+/* 디자인 토큰 — Toss inspired: 흰 캔버스, 확신 있는 블루, 분명한 위계 */
+:root {
+  --primary: #0064ff;
+  --primary-weak: #e8f1ff;
+  --ink: #191f28;
+  --grey-700: #4e5968;
+  --grey-500: #8b95a1;
+  --grey-300: #d1d6db;
+  --grey-200: #e5e8eb;
+  --neutral: #f2f4f6;
+  --white: #ffffff;
+  --bg: #ffffff;
+  --red: #f04452;
+  --red-weak: #ffebee;
+  --orange: #f57800;
+  --orange-weak: #fff2e0;
+  --toast: rgb(25 31 40 / 0.92);
+  --card-shadow: 0 12px 28px rgb(0 27 55 / 0.12);
+
+  --rounded-sm: 8px;
+  --rounded-md: 16px;
+  --rounded-lg: 28px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 28px;
+  /* 화면 폭에 따라 부드럽게 변하는 값 (320px → 16, 400px 이상 → 20) */
+  --gutter: clamp(16px, 5vw, 20px);
+  --card-pad: clamp(18px, 6vw, 24px);
+  --tab-height: 64px;
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --app-width: 480px;
+
+  font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
+    "Malgun Gothic", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.6;
+  color: var(--ink);
+  color-scheme: light;
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+/* 다크 모드: <html data-theme="dark"> */
+:root[data-theme="dark"] {
+  --primary: #3d8bff;
+  --primary-weak: rgb(61 139 255 / 0.16);
+  --ink: #ececee;
+  --grey-700: #b0b8c1;
+  --grey-500: #8b95a1;
+  --grey-300: #4e5968;
+  --grey-200: #333d4b;
+  --neutral: #252a33;
+  --bg: #17171c;
+  --red: #ff6b76;
+  --red-weak: rgb(255 107 118 / 0.16);
+  --orange: #ffa940;
+  --orange-weak: rgb(255 169 64 / 0.16);
+  --toast: rgb(78 89 104 / 0.95);
+  --card-shadow: 0 12px 28px rgb(0 0 0 / 0.45);
+
+  color-scheme: dark;
+}
+
+body,
+#root {
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  min-height: 100dvh;
+  overscroll-behavior-y: none;
+}
+
+button,
+input,
+select,
+a {
+  font: inherit;
+  color: inherit;
+  touch-action: manipulation;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+#root {
+  display: block;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  background: var(--bg);
+}
+
+/* 태블릿·PC: 가운데 휴대폰 폭 컬럼으로 */
+@media (min-width: 481px) {
+  body {
+    background-color: var(--neutral);
+  }
+
+  :root[data-theme="dark"] body {
+    background-color: #0f0f12;
+  }
+
+  #root {
+    max-width: var(--app-width);
+    margin: 0 auto;
+    box-shadow: 0 0 0 1px var(--grey-200);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
